@@ -84,9 +84,8 @@ const users = [
     age: 39
   }
 ];
-
+// Задание 1
 let i = 0;
-console.log(users[0].eyeColor);
 
 const getUserNames = users => {
   const arr = [];
@@ -97,3 +96,170 @@ const getUserNames = users => {
   return (users = arr);
 };
 console.log(getUserNames(users));
+
+const getUserName = users => {
+  const arr = [];
+  users.forEach(item => {
+    arr.push(item.name);
+  });
+  return (users = arr);
+};
+console.log(getUserName(users));
+
+const getUserNam = users => {
+  const arr = [];
+  users.filter(item => {
+    arr.push(item.name);
+  });
+  return (users = arr);
+};
+console.log(getUserNam(users));
+
+const getUserNa = users => {
+  const arr = [];
+  users.map(item => {
+    arr.push(item.name);
+  });
+  return (users = arr);
+};
+console.log(getUserNa(users));
+
+const getUser = users => {
+  const arr = [];
+  users.reduce((item, i) => {
+    arr.push(i.name);
+  }, 0);
+  return (users = arr);
+};
+console.log(getUser(users));
+
+// Задание 2
+
+const getUsersWithEyeColor = (users, color) => {
+  const arr = [];
+  const eyeColor = users.filter(item => {
+    return item.eyeColor == color;
+  });
+
+  return (users = eyeColor);
+};
+
+console.log(getUsersWithEyeColor(users, "blue"));
+
+// Задание 3
+
+const getUsersWithGender = (users, gender) => {
+  const arr = [];
+  const userGender = users
+    .filter(item => {
+      return item.gender == gender;
+    })
+    .forEach(item => {
+      arr.push(item.name);
+    });
+
+  return (users = arr);
+};
+
+// Задание 3
+
+console.log(getUsersWithGender(users, "male"));
+
+// Задание 3
+
+const getInactiveUsers = users => {
+  const arr = users.filter(item => {
+    return !item.isActive;
+  });
+  return arr;
+};
+console.log(getInactiveUsers(users));
+
+// Задание 5
+
+const getUserWithEmail = (users, email) => {
+  const userEmail = users.filter(item => {
+    return item.email == email;
+  });
+
+  return userEmail;
+};
+
+console.log(getUserWithEmail(users, "shereeanthony@kog.com"));
+console.log(getUserWithEmail(users, "elmahead@omatom.com"));
+
+// Задание 6
+
+const getUsersWithAge = (users, min, max) => {
+  const userMinAge = users
+    .filter(item => {
+      return item.age >= min;
+    })
+    .filter(item => {
+      return item.age <= max;
+    });
+  return userMinAge;
+};
+console.log(getUsersWithAge(users, 20, 30));
+
+console.log(getUsersWithAge(users, 30, 40));
+
+// Задание 7
+
+const calculateTotalBalance = users => {
+  const arr = users.reduce((item, i) => {
+    return item + i.balance;
+  }, 0);
+  return arr;
+};
+
+console.log(calculateTotalBalance(users));
+
+// Задание 8
+
+const getUsersWithFriend = (users, friendName) => {
+  const usersWithFriend = users.filter(item => {
+    return item.friends.includes(friendName);
+  });
+
+  return Array.from(usersWithFriend);
+};
+
+console.log(getUsersWithFriend(users, "Briana Decker")); // [ 'Sharlene Bush', 'Sheree Anthony' ]
+console.log(getUsersWithFriend(users, "Goldie Gentry")); // [ 'Elma Head', 'Sheree Anthony' ]
+
+// Задание 9
+
+const getNamesSortedByFriendsCount = users => {
+  const usersSortedByFriendsCount = users.sort((a, b) => {
+    return a.friends.length - b.friends.length;
+  });
+  return usersSortedByFriendsCount;
+};
+console.log(getNamesSortedByFriendsCount(users));
+// [ 'Moore Hensley', 'Sharlene Bush', 'Elma Head', 'Carey Barr', 'Blackburn Dotson', 'Sheree Anthony', 'Ross Vazquez' ]
+
+// Задание 10
+
+const getSortedUniqueSkills = users => {
+  const arr = [];
+  users.forEach(item => {
+    arr.push(
+      item.skills.forEach(item => {
+        arr.push(item);
+      })
+    );
+  });
+
+  return arr
+    .filter((item, i) => {
+      return arr.indexOf(item) == i;
+    })
+    .filter(item => {
+      return item !== undefined;
+    })
+    .sort();
+};
+
+console.log(getSortedUniqueSkills(users));
+// [ 'adipisicing', 'amet', 'anim', 'commodo', 'culpa', 'elit', 'ex', 'ipsum', 'irure', 'laborum', 'lorem', 'mollit', 'non', 'nostrud', 'nulla', 'proident', 'tempor', 'velit', 'veniam' ]
